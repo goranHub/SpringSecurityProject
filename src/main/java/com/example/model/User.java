@@ -131,6 +131,9 @@ public class User implements UserDetails, Serializable {
     }
 
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getRole(){
         return this.role;

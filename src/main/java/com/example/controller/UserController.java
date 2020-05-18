@@ -3,7 +3,7 @@ package com.example.controller;
 
 
 import com.example.model.User;
-import com.example.service.Implementation.UserDetailsManagerImpl;
+import com.example.data.Implementation.UserDetailsManagerImpl;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

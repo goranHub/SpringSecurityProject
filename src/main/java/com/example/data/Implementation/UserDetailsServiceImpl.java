@@ -1,4 +1,4 @@
-package com.example.service.Implementation;
+package com.example.data.Implementation;
 
 import com.example.data.RoleDataAccessService;
 import com.example.data.UserDataAccessService;
@@ -29,30 +29,28 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     Role role;
 
+    int userID =0;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
 
         user = userDataRepository.loadUserByUsername(username);
 
 
         if (user.getFname().equals("admin") && user.getPassword().equals("admin")) {
-
-            user = new User(user.getFname(), passwordEncoder.encode(user.getPassword()), "ADMIN");
-            user.setId(user.getId() +1);
-            role.setUser_id(user.getId());
-            role.setId(role.getId()+1);
+            user.setRole("ADMIN");
+            userID++;
+            user.setId(userID);
             userDetailsManager.createUser(user);
             roleDataAccessService.setRoleAdmin(role,user);
             return user;
         }
 
         if (user.getFname().equals("develop") && user.getPassword().equals("develop")) {
-            user = new User(user.getFname(), passwordEncoder.encode(user.getPassword()), "DEVELOPER");
-            user = new User(user.getFname(), passwordEncoder.encode(user.getPassword()), "ADMIN");
-            user.setId(user.getId() +1);
-            role.setUser_id(user.getId());
-            role.setId(role.getId()+1);
+            user.setRole("DEVELOPER");
+            userID++;
+            user.setId(userID);
             userDetailsManager.createUser(user);
             roleDataAccessService.setRoleDeveloper(role, user);
 

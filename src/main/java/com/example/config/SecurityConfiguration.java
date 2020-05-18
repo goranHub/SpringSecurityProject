@@ -4,7 +4,7 @@ package com.example.config;
 import com.example.data.RoleDataAccessService;
 import com.example.model.Role;
 import com.example.model.User;
-import com.example.service.Implementation.UserDetailsServiceImpl;
+import com.example.data.Implementation.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
+
     }
 
     @Override
